@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+    <title>Bootstrap w/ Parcel</title>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="bg-[#1c5f87]">
+      <div
+        class="max-w-8xl px-10 mx-auto flex justify-between py-4 items-center"
+      >
+        <div class="w-[50px]">
+          <img
+            src="./images/677a313210dd0d15bd92f098.png"
+            alt=""
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="text-white text-2xl">CoopSuccess</div>
+      </div>
+    </header>
+
+    <!-- end header -->
+
+    <!-- hero -->
+    <div class="py-21 bg-[#f4f9fd]">
+      <div
+        class="max-w-8xl px-8 md:px-10 mx-auto flex flex-col md:flex-row items-center"
+      >
+        <div class="w-full md:w-1/2 md:pr-5">
+          <h1
+            class="font-bold text-[#1c5f87] text-3xl md:text-5xl leading-normal"
+          >
+            CoopC Frequently Asked Questions (FAQs)
+          </h1>
+          <div class="py-4 text-lg md:pr-16">
+            We know you have questions, and we’re here to answer them! CoopC is
+            revolutionizing the way people earn Predictable Ongoing Passive
+            Income (POP Income) through the power of cooperative crowdfunding.
+            Whether you're just getting started or want to maximize your
+            earnings, this page covers everything you need to know. No
+            confusion. No guesswork. Just clear answers to help you succeed with
+            CoopC!
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 flex items-center justify-center">
+          <img
+            class="w-full"
+            src="./images/87039a47ad8a6589a355831b4d4e52c6_1200_80.webp"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- end hero -->
+
+    <!-- accordions -->
+    <div class="accordions">
+      <div
+        class="w-full max-w-5xl px-8 md:px-10 py-10 mx-auto flex flex-col gap-y-8"
+      >
+        <!-- general -->
+        <div>
+          <h3 class="font-bold text-[#1c5f87] text-4xl py-4">
+            General Questions
+          </h3>
+          <div id="accordion-container" class="flex flex-col gap-y-4"></div>
+
+          <script>
+            const accordionData = [
+              {
+                question: "What is Cooperative Crowdfunding?",
+                answer:
+                  "Cooperative Crowdfunding is a revolutionary way to raise funds, where contributions are shared among multiple causes. It creates a supportive community, making fundraising more accessible and helping more people than traditional crowdfunding ever could.",
+              },
+              {
+                question:
+                  "How is Crowdfunding 2.0 different from traditional crowdfunding?",
+                answer:
+                  "Cooperative Crowdfunding is built on a revolutionary cooperative model where participants both give and receive financial benefits. Unlike traditional crowdfunding, which focuses on one-time donations for individual projects, Cooperative Crowdfunding splits contributions across multiple causes, creating a supportive network. This approach makes fundraising more accessible, helps more people succeed, and fosters a collaborative community.",
+              },
+              {
+                question: "What is CUIR, and why is it important?",
+                answer:
+                  "Cooperative Universal Income Replacement (CUIR) is a revolutionary system designed to replace traditional income sources in a rapidly changing world. As AI, robotics, and advanced technology continue to eliminate jobs faster than new ones can be created, CUIR provides a much-needed solution by offering a sustainable income and daily cash flow. It empowers members to achieve financial stability and independence, ensuring they can thrive in the 21st century despite technological disruptions.",
+              },
+              {
+                question: "What does “Turning Giving Into Receiving” mean?",
+                answer:
+                  "This phrase represents CoopC’s core philosophy, where your initial financial contribution not only supports others but also sets you up with your own Cooperative Crowdfunding system. This system empowers you to raise the funds you need to cover monthly expenses, support meaningful causes, and fund the life you’ve always dreamed of. By giving, you create a ripple effect of shared success, leading to personal financial benefits, community growth, and a sustainable income. Turning your giving into receiving!",
+              },
+              {
+                question: "What is the goal of CoopC?",
+                answer:
+                  "CoopC’s mission is to unite one billion people globally and eradicate poverty by 2030, using cooperative contributions and sustainable income systems.",
+              },
+              {
+                question: "How much does it cost to join CoopC?",
+                answer:
+                  "The cost to join CoopC depends on the level you choose (C12, C28, or C280). Each level offers different contribution amounts and earning potentials, starting at just $1 a day.",
+              },
+              {
+                question: "Is CoopC a pyramid scheme?",
+                answer:
+                  "No, CoopC is not a pyramid scheme. It operates on a cooperative model where everyone benefits from shared contributions, and success is based on mutual efforts, not on recruiting alone.",
+              },
+            ];
+
+            const accordionContainer = document.getElementById(
+              "accordion-container"
+            );
+
+            accordionData.forEach((item, index) => {
+              // Create the accordion item
+              const accordionItem = document.createElement("div");
+              accordionItem.classList.add("w-full");
+              accordionItem.innerHTML = `
+                    <div id="accordion-${index}" data-active-classes="bg-blue-100" data-accordion="collapse" class="w-full">
+                      <h2 id="accordion-heading-${index}">
+                        <button
+                          type="button"
+                          class="flex items-center justify-between w-full p-5 font-medium text-black text-lg border border-gray-200 rounded-t-xl gap-3"
+                          data-accordion-target="#accordion-body-${index}"
+                          aria-expanded="false"
+                          aria-controls="accordion-body-${index}"
+                        >
+                          <span class="text-black">${item.question}</span>
+                          <svg data-accordion-icon class="w-3 h-3 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                          </svg>
+                        </button>
+                      </h2>
+                      <div id="accordion-body-${index}" class="hidden w-full" aria-labelledby="accordion-heading-${index}">
+                        <div class="p-5 border border-gray-200 w-full">
+                          <p class="mb-2 text-black">${item.answer}</p>
+                        </div>
+                      </div>
+                    </div>
+                  `;
+
+              // Append the new accordion item to the container
+              accordionContainer.appendChild(accordionItem);
+            });
+
+            // Accordion toggle functionality
+            const accordionItems = document.querySelectorAll(
+              '[data-accordion="collapse"]'
+            );
+            accordionItems.forEach((item) => {
+              const button = item.querySelector("button");
+              const target = document.querySelector(
+                button.getAttribute("data-accordion-target")
+              );
+              const icon = button.querySelector("[data-accordion-icon]");
+
+              button.addEventListener("click", () => {
+                const isExpanded =
+                  button.getAttribute("aria-expanded") === "true";
+
+                // Toggle the display of the answer
+                target.classList.toggle("hidden", isExpanded);
+                button.setAttribute("aria-expanded", !isExpanded);
+
+                // Toggle the icon direction
+                icon.classList.toggle("rotate-180", !isExpanded);
+              });
+            });
+          </script>
+        </div>
+        <!-- end general -->
+
+        <!-- members -->
+        <div>
+          <h3 class="font-bold text-[#1c5f87] text-4xl py-4">
+            Membership and Participation
+          </h3>
+          <div id="member-container" class="flex flex-col gap-y-4"></div>
+          <script>
+            const members = [
+              {
+                question: "How do I join CoopC?",
+                answer:
+                  "You can join CoopC by making a financial contribution to one of the cooperative levels (C12, C28, or C280). Once you’re a member, you can participate in sharing the system and receiving income.",
+              },
+              {
+                question: "What are C12, C28, and C280?",
+                answer:
+                  "These are the three income levels in CoopC:\nC12: The entry-level with minimal contributions.\nC28: A mid-tier level offering balanced affordability and earning potential.\nC280: A premium level designed for significant financial growth.",
+              },
+              {
+                question: "What are the “Three Simple Doable Steps”?",
+                answer:
+                  "The CoopC system is built on these steps:\n1. Give a contribution.\n2. Share CoopC with others.\n3. Receive income through The Cooperative.",
+              },
+              {
+                question: "What happens if I don’t renew my Subscription?",
+                answer:
+                  "Failing to renew your subscription may result in not being able to receive royalties and permanently losing your position in the cooperative, which will impact your earning potential.",
+              },
+              {
+                question: "Can anyone join CoopC?",
+                answer:
+                  "Yes! CoopC is designed to be accessible to everyone, regardless of financial background, and offers a low entry point to get started.",
+              },
+              {
+                question: "Do I have to recruit people to earn income?",
+                answer:
+                  "While sharing CoopC can accelerate your income growth, you’ll still benefit from the cooperative system’s pooled contributions and support from the global network.",
+              },
+              {
+                question:
+                  "Can I upgrade to a higher level (C28 or C280) later?",
+                answer:
+                  "Yes, you can upgrade your participation level at any time to increase your earning potential and access additional benefits.",
+              },
+              {
+                question: "What support is available to new members?",
+                answer:
+                  "New members have access to onboarding materials, FAQs, and support from their cooperative network to ensure they understand the system and succeed.",
+              },
+            ];
+
+            const memberContainer = document.getElementById("member-container");
+
+            members.forEach((item, index) => {
+              // Create the accordion item
+              const memberItem = document.createElement("div");
+              memberItem.classList.add("w-full");
+              memberItem.innerHTML = `
+                  <div id="member-accordion-${index}" data-active-classes="bg-blue-100" data-accordion="collapse" class="w-full">
+                    <h2 id="member-accordion-heading-${index}">
+                      <button
+                        type="button"
+                        class="flex items-center justify-between w-full p-5 font-medium text-black text-lg border border-gray-200 rounded-t-xl gap-3"
+                        data-accordion-target="#member-accordion-body-${index}"
+                        aria-expanded="false"
+                        aria-controls="member-accordion-body-${index}"
+                      >
+                        <span class="text-black">${item.question}</span>
+                        <svg data-accordion-icon class="w-3 h-3 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                        </svg>
+                      </button>
+                    </h2>
+                    <div id="member-accordion-body-${index}" class="hidden w-full" aria-labelledby="member-accordion-heading-${index}">
+                      <div class="p-5 border border-gray-200 w-full">
+                        <p class="mb-2 text-black">${item.answer}</p>
+                      </div>
+                    </div>
+                  </div>
+                `;
+
+              // Append the new accordion item to the container
+              memberContainer.appendChild(memberItem);
+            });
+
+            // Accordion toggle functionality for membership section
+            const memberAccordionItems = document.querySelectorAll(
+              '[data-accordion="collapse"]'
+            );
+            memberAccordionItems.forEach((item) => {
+              const button = item.querySelector("button");
+              const target = document.querySelector(
+                button.getAttribute("data-accordion-target")
+              );
+              const icon = button.querySelector("[data-accordion-icon]");
+
+              button.addEventListener("click", () => {
+                const isExpanded =
+                  button.getAttribute("aria-expanded") === "true";
+
+                // Toggle the display of the answer
+                target.classList.toggle("hidden", isExpanded);
+                button.setAttribute("aria-expanded", !isExpanded);
+
+                // Toggle the icon direction
+                icon.classList.toggle("rotate-180", !isExpanded);
+              });
+            });
+          </script>
+        </div>
+        <!-- end members -->
+
+        <!-- earnings and financials -->
+        <div>
+          <h3 class="font-bold text-[#1c5f87] text-4xl py-4">
+            Earnings and Financials
+          </h3>
+          <div id="earnings-container" class="flex flex-col gap-y-4"></div>
+
+          <script>
+            const earningsData = [
+              {
+                question: "How does CoopC help me earn income?",
+                answer:
+                  "CoopC leverages a cooperative model where contributions are pooled, shared, and distributed among members. As the cooperative grows, your income increases.",
+              },
+              {
+                question:
+                  "What is a Predictable Ongoing Passive Income (POP Income)?",
+                answer:
+                  "POP Income is the reliable and recurring income members earn through their participation in CoopC’s system.",
+              },
+              {
+                question: "How quickly can I start earning?",
+                answer:
+                  "It’s CoopC’s global income framework, ensuring members worldwide can achieve financial freedom through cooperative contributions and efforts.",
+              },
+              {
+                question: "What is the World CUIR System?",
+                answer:
+                  "It’s CoopC’s global income framework, ensuring members worldwide can achieve financial freedom through cooperative contributions and efforts.",
+              },
+              {
+                question: "Can I withdraw funds anytime?",
+                answer:
+                  "Yes! CoopC’s CoopWallet allows you to withdraw your earnings 24/7, providing financial flexibility and control.",
+              },
+              {
+                question: "What are CoopBits, and how do they work?",
+                answer:
+                  "CoopBits are the native tokens of CoopC, used for contributions, transactions, and rewards within the system. As CoopC grows, the value of CoopBits may increase.",
+              },
+              {
+                question: "Are my contributions refundable?",
+                answer:
+                  "Contributions in CoopC are non-refundable because they immediately become part of the cooperative pool to support the system and other members.",
+              },
+              {
+                question: "How does CoopC handle taxes on income?",
+                answer:
+                  "Members are responsible for managing taxes on income earned through CoopC based on their country’s tax laws. CoopC provides tools to track earnings for easier reporting.",
+              },
+            ];
+
+            const earningsContainer =
+              document.getElementById("earnings-container");
+
+            earningsData.forEach((item, index) => {
+              // Create the accordion item for earnings section
+              const earningsItem = document.createElement("div");
+              earningsItem.classList.add("w-full");
+              earningsItem.innerHTML = `
+                                     <div id="earnings-accordion-${index}" data-active-classes="bg-blue-100" data-accordion="collapse" class="w-full">
+                                       <h2 id="earnings-accordion-heading-${index}">
+                                         <button
+                                           type="button"
+                                           class="flex items-center justify-between w-full p-5 font-medium text-black text-lg border border-gray-200 rounded-t-xl gap-3"
+                                           data-accordion-target="#earnings-accordion-body-${index}"
+                                           aria-expanded="false"
+                                           aria-controls="earnings-accordion-body-${index}"
+                                         >
+                                           <span class="text-black">${item.question}</span>
+                                           <svg data-accordion-icon class="w-3 h-3 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                                           </svg>
+                                         </button>
+                                       </h2>
+                                       <div id="earnings-accordion-body-${index}" class="hidden w-full" aria-labelledby="earnings-accordion-heading-${index}">
+                                         <div class="p-5 border border-gray-200 w-full">
+                                           <p class="mb-2 text-black">${item.answer}</p>
+                                         </div>
+                                       </div>
+                                     </div>
+                                   `;
+
+              // Append the new accordion item to the earnings container
+              earningsContainer.appendChild(earningsItem);
+            });
+
+            // Accordion toggle functionality for earnings section
+            const earningsAccordionItems = document.querySelectorAll(
+              '[data-accordion="collapse"]'
+            );
+            earningsAccordionItems.forEach((item) => {
+              const button = item.querySelector("button");
+              const target = document.querySelector(
+                button.getAttribute("data-accordion-target")
+              );
+              const icon = button.querySelector("[data-accordion-icon]");
+
+              button.addEventListener("click", () => {
+                const isExpanded =
+                  button.getAttribute("aria-expanded") === "true";
+
+                // Toggle the display of the answer
+                target.classList.toggle("hidden", isExpanded);
+                button.setAttribute("aria-expanded", !isExpanded);
+
+                // Toggle the icon direction
+                icon.classList.toggle("rotate-180", !isExpanded);
+              });
+            });
+          </script>
+        </div>
+        <!-- end earnings and financials -->
+
+        <!-- growth and sharing -->
+        <div>
+          <h3 class="font-bold text-[#1c5f87] text-4xl py-4">
+            Growth and Sharing
+          </h3>
+          <div id="growth-container" class="flex flex-col gap-y-4"></div>
+
+          <script>
+            const growthData = [
+              {
+                question: "How do I share CoopC with others?",
+                answer:
+                  "Sharing is simple: use your personal referral link or introduce CoopC to friends, family, or colleagues. Sharing helps grow the cooperative and benefits everyone involved.",
+              },
+              {
+                question: "What is the “84-Day Challenge”?",
+                answer:
+                  "The 84-Day Challenge is a motivational campaign encouraging members to achieve financial and personal goals over three subscription cycles. Participants share their journey and inspire others to join.",
+              },
+              {
+                question: "What is the role of relationships in CoopC?",
+                answer:
+                  "CoopC operates on a relationship economy, where personal networks drive growth. By sharing CoopC with trusted individuals, you build a stronger cooperative and enhance your earnings.",
+              },
+              {
+                question: "How does CoopC ensure fairness in growth?",
+                answer:
+                  "CoopC’s system includes features like leapfrogging protection to ensure active members retain their positions and rewards.",
+              },
+            ];
+
+            const growthContainer = document.getElementById("growth-container");
+
+            growthData.forEach((item, index) => {
+              // Create the accordion item for growth section
+              const growthItem = document.createElement("div");
+              growthItem.classList.add("w-full");
+              growthItem.innerHTML = `
+                                       <div id="growth-accordion-${index}" data-active-classes="bg-blue-100" data-accordion="collapse" class="w-full">
+                                         <h2 id="growth-accordion-heading-${index}">
+                                           <button
+                                             type="button"
+                                             class="flex items-center justify-between w-full p-5 font-medium text-black text-lg border border-gray-200 rounded-t-xl gap-3"
+                                             data-accordion-target="#growth-accordion-body-${index}"
+                                             aria-expanded="false"
+                                             aria-controls="growth-accordion-body-${index}"
+                                           >
+                                             <span class="text-black">${item.question}</span>
+                                             <svg data-accordion-icon class="w-3 h-3 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                                             </svg>
+                                           </button>
+                                         </h2>
+                                         <div id="growth-accordion-body-${index}" class="hidden w-full" aria-labelledby="growth-accordion-heading-${index}">
+                                           <div class="p-5 border border-gray-200 w-full">
+                                             <p class="mb-2 text-black">${item.answer}</p>
+                                           </div>
+                                         </div>
+                                       </div>
+                                     `;
+
+              // Append the new accordion item to the growth container
+              growthContainer.appendChild(growthItem);
+            });
+
+            // Accordion toggle functionality for growth section
+            const growthAccordionItems = document.querySelectorAll(
+              '[data-accordion="collapse"]'
+            );
+            growthAccordionItems.forEach((item) => {
+              const button = item.querySelector("button");
+              const target = document.querySelector(
+                button.getAttribute("data-accordion-target")
+              );
+              const icon = button.querySelector("[data-accordion-icon]");
+
+              button.addEventListener("click", () => {
+                const isExpanded =
+                  button.getAttribute("aria-expanded") === "true";
+
+                // Toggle the display of the answer
+                target.classList.toggle("hidden", isExpanded);
+                button.setAttribute("aria-expanded", !isExpanded);
+
+                // Toggle the icon direction
+                icon.classList.toggle("rotate-180", !isExpanded);
+              });
+            });
+          </script>
+        </div>
+        <!-- end growth and expansion -->
+
+        <!-- mission -->
+        <div>
+          <h3 class="font-bold text-[#1c5f87] text-4xl py-4">
+            Mission and Philosophy
+          </h3>
+          <div id="mission-container" class="flex flex-col gap-y-4"></div>
+
+          <script>
+            const missionData = [
+              {
+                question:
+                  "What makes CoopC different from other financial systems?",
+                answer:
+                  "CoopC emphasizes cooperation over competition, offering a system where giving leads to receiving. It’s mission-driven, aiming to end poverty and promote financial freedom for all.",
+              },
+              {
+                question: "How does CoopC contribute to ending poverty?",
+                answer:
+                  "By creating a global cooperative network, CoopC empowers members to achieve financial independence, fund causes, and uplift communities through shared success.",
+              },
+              {
+                question: "What is the Cooperative Economy?",
+                answer:
+                  "CoopC is part of a cooperative economy that focuses on shared resources and benefits, replacing traditional competitive models with collaboration and generosity.",
+              },
+              {
+                question: "What is the Giving Economy?",
+                answer:
+                  "The Giving Economy redefines financial interactions by making giving the first step in a cycle of generosity, shared growth, and receiving financial rewards.",
+              },
+              {
+                question: "What is CoopC’s mission for 2030?",
+                answer:
+                  "CoopC aims to unite one billion members globally to eradicate poverty through Cooperative Crowdfunding and sustainable income systems by the end of this decade.",
+              },
+              {
+                question: "What are CoopC’s long-term goals beyond 2030?",
+                answer:
+                  "CoopC plans to expand its cooperative network to address broader global challenges, including education, healthcare, and climate change.",
+              },
+            ];
+
+            const missionContainer =
+              document.getElementById("mission-container");
+
+            missionData.forEach((item, index) => {
+              // Create the accordion item for the mission section
+              const missionItem = document.createElement("div");
+              missionItem.classList.add("w-full");
+              missionItem.innerHTML = `
+                                       <div id="mission-accordion-${index}" data-active-classes="bg-blue-100" data-accordion="collapse" class="w-full">
+                                         <h2 id="mission-accordion-heading-${index}">
+                                           <button
+                                             type="button"
+                                             class="flex items-center justify-between w-full p-5 font-medium text-black text-lg border border-gray-200 rounded-t-xl gap-3"
+                                             data-accordion-target="#mission-accordion-body-${index}"
+                                             aria-expanded="false"
+                                             aria-controls="mission-accordion-body-${index}"
+                                           >
+                                             <span class="text-black">${item.question}</span>
+                                             <svg data-accordion-icon class="w-3 h-3 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                                             </svg>
+                                           </button>
+                                         </h2>
+                                         <div id="mission-accordion-body-${index}" class="hidden w-full" aria-labelledby="mission-accordion-heading-${index}">
+                                           <div class="p-5 border border-gray-200 w-full">
+                                             <p class="mb-2 text-black">${item.answer}</p>
+                                           </div>
+                                         </div>
+                                       </div>
+                                     `;
+
+              // Append the new accordion item to the mission container
+              missionContainer.appendChild(missionItem);
+            });
+
+            // Accordion toggle functionality for mission section
+            const missionAccordionItems = document.querySelectorAll(
+              '[data-accordion="collapse"]'
+            );
+            missionAccordionItems.forEach((item) => {
+              const button = item.querySelector("button");
+              const target = document.querySelector(
+                button.getAttribute("data-accordion-target")
+              );
+              const icon = button.querySelector("[data-accordion-icon]");
+
+              button.addEventListener("click", () => {
+                const isExpanded =
+                  button.getAttribute("aria-expanded") === "true";
+
+                // Toggle the display of the answer
+                target.classList.toggle("hidden", isExpanded);
+                button.setAttribute("aria-expanded", !isExpanded);
+
+                // Toggle the icon direction
+                icon.classList.toggle("rotate-180", !isExpanded);
+              });
+            });
+          </script>
+          <!-- end mission -->
+        </div>
+      </div>
+    </div>
+
+    <!-- end accordions -->
+
+    <footer class="bg-[#1c5f87] text-white py-8">
+      <div class="container mx-auto px-6">
+        <div class="flex justify-center items-center">
+          <div class="w-full">
+            <div class="border-t border-gray-600 py-4"></div>
+            <div class="text-center">
+              <p class="text-sm">
+                © 2001 - 2025 CoopCrowd™ All rights reserved -
+                <a
+                  href="https://coopc.com/terms"
+                  target="_blank"
+                  class="text-blue-400 hover:underline"
+                  >Terms of Service</a
+                >
+                -
+                <a
+                  href="https://coopc.com/privacy"
+                  target="_blank"
+                  class="text-blue-400 hover:underline"
+                  >Privacy Policy</a
+                >
+                -
+                <a
+                  href="https://coopc.com/disclaimer"
+                  target="_blank"
+                  class="text-blue-400 hover:underline"
+                  >Disclaimer</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
